@@ -1,0 +1,34 @@
+{% load i18n %}
+<form class="form-inline" id="c-form">
+    {% if form.errors %}
+    <div class="alert alert-danger" id="error-message-div">
+        {{ form.errors }}
+    </div>
+    {% endif %}
+    <form class="form-inline">
+    <div class="row">
+
+        <div class="col">
+            {{ form.title }}
+        </div>
+
+        <div class="col">
+            {{ form.author }}
+        </div>
+
+        <div class="col">
+            {{ form.price }}
+        </div>
+
+        <div class="col">
+            <!-- Кнопка "Add book" -->
+            <button type="submit"
+                    class="disbtn btn btn-primary"
+                    hx-post="{% url 'create_book' %}"
+                    hx-target="#book-list"
+                    hx-swap="beforeend">
+                {% trans "Add book" %}
+            </button>
+        </div>
+    </div>
+</form>
